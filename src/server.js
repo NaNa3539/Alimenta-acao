@@ -7,7 +7,7 @@ app.use(express.static('public'));
 
 // fornecer alimentos em JSON
 app.get('/api/alimentos', (req, res) => {
-  fs.readFile('data/alimentos.json', 'utf8', (err, data) => {
+  fs.readFile('public/alimentos.json', 'utf8', (err, data) => {
     if (err) {
       res.status(500).json({ error: 'Erro ao ler o arquivo de alimentos' });
       return;
