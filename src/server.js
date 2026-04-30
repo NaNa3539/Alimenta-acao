@@ -12,10 +12,13 @@ app.get('/api/alimentos', (req, res) => {
 
   fs.readFile(caminhoArquivo, 'utf8', (err, data) => {
     if (err) {
-      console.error('Erro ao ler alimentos.json:', err);
-      res.status(500).json({ error: 'Erro ao ler o arquivo de alimentos' });
-      return;
-    }
+  console.error('Erro ao ler alimentos.json:', err);
+  res.status(500).json({
+    error: 'Erro ao ler o arquivo de alimentos',
+    detalhe: err.message
+  });
+  return;
+}
 
     try {
       res.json(JSON.parse(data));
