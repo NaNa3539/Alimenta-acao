@@ -183,7 +183,9 @@ function atualizarLancheira() {
 
     lista.innerHTML = "";
     let totalKcal = 0;
-
+    const temUltraprocessado = lancheira.some(item =>
+    item.categoria === 'Proteínas e Gorduras Ultraprocessadas'
+);
     
 
     if (lancheira.length === 0) {
@@ -216,14 +218,26 @@ function atualizarLancheira() {
         mensagemElement.textContent = `⚠️ Você ultrapassou o limite de ${LIMITE_KCAL} kcal por ${totalKcal - LIMITE_KCAL} kcal! Revise suas escolhas.`;
         mensagemElement.className = "mensagem perigo";
         totalElement.style.color = '#ef4444'; 
+
+    if (temUltraprocessado) {
+    mensagemElement.textContent += " ⚠️ Contém alimentos ultraprocessados. Prefira opções naturais.";
+}
     } else if (totalKcal > LIMITE_KCAL * 0.75 && totalKcal <= LIMITE_KCAL) {
-        mensagemElement.textContent = `✅ Lanche Perfeito! Você está no alvo de calorias.`;
+        mensagemElement.textContent = `✅ Você está no alvo de calorias.`;
         mensagemElement.className = "mensagem sucesso";
         totalElement.style.color = '#4ade80';
+
+    if (temUltraprocessado) {
+    mensagemElement.textContent += " ⚠️ Contém alimentos ultraprocessados. Prefira opções naturais.";
+}
     } else {
         mensagemElement.textContent = `👍 Continue adicionando! Você está com ${totalKcal} kcal.`;
         mensagemElement.className = "mensagem alerta";
         totalElement.style.color = '#fde047';
+        
+    if (temUltraprocessado) {
+    mensagemElement.textContent += " ⚠️ Contém alimentos ultraprocessados. Prefira opções naturais.";
+}
     }
 }
 
