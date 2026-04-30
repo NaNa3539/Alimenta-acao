@@ -84,7 +84,7 @@
     { "nome": "Salame (4 fatias finas)", "kcal": 160, "categoria": "Proteínas e Gorduras Ultraprocessadas" },
     { "nome": "Linguiça (1 unidade média)", "kcal": 160, "categoria": "Proteínas e Gorduras Ultraprocessadas" },
     { "nome": "Margarina (1 colher chá)", "kcal": 72, "categoria": "Proteínas e Gorduras Ultraprocessadas" },
-    { "nome": "Maionese (1 colher sopa)", "kcal": 43, "categoria": "Proteínas e Gorduras Ultraprocessadas" }
+    { "nome": "Maionese (1 colher sopa)", "kcal": 43, "categoria": "Proteínas e Gorduras Ultraprocessadas" },
     { "nome": "Água (200ml)", "kcal": 0, "categoria": "Bebidas" },
     { "nome": "Suco natural (200ml)", "kcal": 84, "categoria": "Bebidas" },
     { "nome": "Refrigerante (1 lata)", "kcal": 140, "categoria": "Bebidas" },
