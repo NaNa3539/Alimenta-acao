@@ -12,16 +12,14 @@ app.get('/api/alimentos', (req, res) => {
 
   fs.readFile(caminhoArquivo, 'utf8', (err, data) => {
     if (err) {
-  console.error('Erro ao ler alimentos.json:', err);
-  res.status(500).json({
-    error: 'Erro ao ler o arquivo de alimentos',
-    detalhe: err.message
-  });
-  return;
-}
+      console.error('Erro ao ler alimentos.json:', err);
+      res.status(500).json({ error: 'Erro ao ler o arquivo de alimentos' });
+      return;
+    }
 
     try {
-      res.json(JSON.parse(data));
+      const alimentos = JSON.parse(data);
+      res.json(alimentos);
     } catch (parseError) {
       console.error('Erro no JSON:', parseError);
       res.status(500).json({ error: 'Erro de formato no alimentos.json' });
