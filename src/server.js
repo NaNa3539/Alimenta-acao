@@ -10,19 +10,29 @@ app.use(express.static('public'));
 app.get('/api/alimentos', (req, res) => {
   const caminhoArquivo = path.join(__dirname, '..', 'public', 'alimentos.json');
 
+  console.log('Pasta atual:', process.cwd());
+  console.log('Caminho do arquivo:', caminhoArquivo);
+  console.log('Arquivo existe?', fs.existsSync(caminhoArquivo));
+
   fs.readFile(caminhoArquivo, 'utf8', (err, data) => {
     if (err) {
-      console.error('Erro ao ler alimentos.json:', err);
-      res.status(500).json({ error: 'Erro ao ler o arquivo de alimentos' });
+      console.error('Erro real:', err);
+      res.status(500).json({
+        error: 'Erro ao ler o arquivo de alimentos',
+        caminho: caminhoArquivo,
+        existe: fs.existsSync(caminhoArquivo),
+        detalhe: err.message
+      });
       return;
     }
 
     try {
-      const alimentos = JSON.parse(data);
-      res.json(alimentos);
+      res.json(JSON.parse(data));
     } catch (parseError) {
-      console.error('Erro no JSON:', parseError);
-      res.status(500).json({ error: 'Erro de formato no alimentos.json' });
+      res.status(500).json({
+        error: 'Erro de formato no alimentos.json',
+        detalhe: parseError.message
+      });
     }
   });
 });
