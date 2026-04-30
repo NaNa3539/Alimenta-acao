@@ -1,22 +1,31 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
+
 const app = express();
 const port = 3000;
 
 app.use(express.static('public'));
 
-// fornecer alimentos em JSON
 app.get('/api/alimentos', (req, res) => {
-  fs.readFile('public/alimentos.json', 'utf8', (err, data) => {
+  const caminhoArquivo = path.join(__dirname, '..', 'public', 'alimentos.json');
+
+  fs.readFile(caminhoArquivo, 'utf8', (err, data) => {
     if (err) {
+      console.error('Erro ao ler alimentos.json:', err);
       res.status(500).json({ error: 'Erro ao ler o arquivo de alimentos' });
       return;
     }
-    res.json(JSON.parse(data));
+
+    try {
+      res.json(JSON.parse(data));
+    } catch (parseError) {
+      console.error('Erro no JSON:', parseError);
+      res.status(500).json({ error: 'Erro de formato no alimentos.json' });
+    }
   });
 });
 
-// Inicia servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
