@@ -89,6 +89,6 @@
     { "nome": "Suco natural (200ml)", "kcal": 84, "categoria": "Bebidas" },
     { "nome": "Refrigerante (1 lata)", "kcal": 140, "categoria": "Bebidas" },
     { "nome": "Néctar de laranja (200ml)", "kcal": 90, "categoria": "Bebidas" },
-    { "nome": "Achocolatado (200ml)", "kcal": 76, "categoria": "Bebidas" },
+    { "nome": "Achocolatado (200ml)", "kcal": 170, "categoria": "Bebidas" },
     { "nome": "Iogurte de beber (1 garrafinha)", "kcal": 119, "categoria": "Bebidas" }
 ]
